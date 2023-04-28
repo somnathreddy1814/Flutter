@@ -1,0 +1,1053 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:card_swiper/card_swiper.dart';
+import 'package:flutter/cupertino.dart';
+
+import 'package:flutter/painting.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+void main() => runApp(
+      MaterialApp(
+        home: Page1(),
+      ),
+    );
+
+class Page1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+    double sw = MediaQuery.of(context).size.width;
+    double sh = MediaQuery.of(context).size.height;
+
+    return MaterialApp(
+      home: Scaffold(
+        resizeToAvoidBottomInset: false,
+        backgroundColor: Colors.pink[100],
+        body: Container(
+          height: sh,
+          width: sw,
+          alignment: Alignment.center,
+          child: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                Container(
+                  height: sh * 0.19,
+                  width: sw,
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.only(top: sh * 0.10),
+                  child: Text(
+                    'Restoe',
+                    style: TextStyle(
+                      fontSize: sw * 0.15,
+                      foreground: Paint()
+                        ..style = PaintingStyle.stroke
+                        ..strokeWidth = 4
+                        ..color = Colors.black87,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: sw * .10,
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.only(top: sh * .001),
+                  child: Text(
+                      style: TextStyle(
+                          fontSize: sw * 0.05,
+                          color: Colors.black87,
+                          fontStyle: FontStyle.normal),
+                      "Restaurant App"),
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  width: sw,
+                  height: sh * .75,
+                  padding: EdgeInsets.only(bottom: sh * .03),
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: <Widget>[
+                      Container(
+                        padding: EdgeInsets.only(
+                            top: sh * 0.15, left: sw * 0.1, right: sw * 0.1),
+                        child: Container(
+                          width: sw,
+                          height: sh * .5,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(40),
+                            gradient: LinearGradient(
+                              begin: Alignment.centerLeft,
+                              colors: [
+                                Color.fromRGBO(241, 96, 138, 100),
+                                Color.fromRGBO(100, 100, 210, 100),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        child: Padding(
+                          padding: EdgeInsets.only(bottom: sh * 0.38),
+                          child: Container(
+                            height: sw * 0.5,
+                            width: sw * 0.6,
+                            decoration: new BoxDecoration(
+                              image: new DecorationImage(
+                                image: new AssetImage('assets/69.jpg'),
+                                fit: BoxFit.fill,
+                              ),
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        alignment: Alignment.center,
+                        padding: EdgeInsets.only(top: sh * 0.62),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => login(),
+                              ),
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20.0)),
+                              primary: Colors.purple,
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 40, vertical: 20),
+                              textStyle: const TextStyle(
+                                  fontSize: 25, fontWeight: FontWeight.bold)),
+                          child: Text("  Get started  "),
+                        ),
+                      ),
+                      SingleChildScrollView(
+                        child: Column(
+                          children: <Widget>[
+                            Container(
+                              alignment: Alignment.center,
+                              padding: EdgeInsets.only(top: sh * 0.3),
+                              child: Text(
+                                  style: TextStyle(
+                                      fontSize: sw * 0.075,
+                                      color: Colors.white,
+                                      fontStyle: FontStyle.normal),
+                                  "Great taste"),
+                            ),
+                            Container(
+                              alignment: Alignment.center,
+                              padding: EdgeInsets.only(top: sh * 0.01),
+                              child: Text(
+                                  style: TextStyle(
+                                      fontSize: sw * 0.075,
+                                      color: Colors.white,
+                                      fontStyle: FontStyle.normal),
+                                  "great sensation"),
+                            ),
+                            Container(
+                              height: sw * 0.5,
+                              width: sw,
+                              child: Swiper(
+                                itemBuilder: (BuildContext context, int index) {
+                                  return Container(
+                                    alignment: Alignment.centerRight,
+                                    padding: EdgeInsets.only(
+                                        left: sw * 0.17, right: sw * 0.17),
+                                    height: sw * 0.5,
+                                    width: sw,
+                                    child: Text(
+                                        style: TextStyle(
+                                            fontSize: sw * 0.06,
+                                            color: Colors.pink[50],
+                                            fontStyle: FontStyle.normal),
+                                        "Eating is My work while working is my hobby"),
+                                  );
+                                },
+                                scrollDirection: Axis.horizontal,
+                                itemCount: 1,
+                                autoplay: true,
+                                itemHeight: sw * 0.49,
+                                itemWidth: sh * 0.49,
+                                layout: SwiperLayout.DEFAULT,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ), //Stack stuff
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class login extends StatelessWidget {
+  const login({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+
+    double sw = MediaQuery.of(context).size.width;
+    double sh = MediaQuery.of(context).size.height;
+
+    return MaterialApp(
+      home: Scaffold(
+        resizeToAvoidBottomInset: false,
+        backgroundColor: Colors.pink[50],
+        body: Container(
+          height: sh,
+          width: sw,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(height: sh * 0.05),
+              Container(
+                alignment: Alignment.center,
+                padding: EdgeInsets.only(top: sh * 0.04),
+                child: Text(
+                  'Restoe',
+                  style: TextStyle(
+                    fontSize: sw * 0.15,
+                    foreground: Paint()
+                      ..style = PaintingStyle.stroke
+                      ..strokeWidth = 4
+                      ..color = Colors.black87,
+                  ),
+                ),
+              ),
+              Container(
+                width: sw,
+                alignment: Alignment.center,
+                child: Text(
+                    style: TextStyle(
+                        fontSize: sw * 0.05,
+                        color: Colors.blueGrey,
+                        fontStyle: FontStyle.normal),
+                    "Restaurant App"),
+              ),
+              SizedBox(height: sh * 0.05),
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.only(),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(50),
+                        topRight: Radius.circular(50),
+                      )),
+                  child: Column(
+                    children: <Widget>[
+                      SizedBox(height: sh * 0.05),
+                      Container(
+                          padding: EdgeInsets.only(left: sw * 0.1),
+                          alignment: Alignment.centerLeft,
+                          child: const Text(
+                            'Welcome back',
+                            style: TextStyle(
+                              fontSize: 28,
+                              color: Colors.black87,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          )),
+                      Container(
+                        padding: EdgeInsets.only(
+                            top: sh * 0.0125,
+                            left: sw * 0.115,
+                            right: sw * 0.08),
+                        child: Text(
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.black87,
+                                fontStyle: FontStyle.normal),
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor "),
+                      ),
+                      Container(
+                        padding:
+                            EdgeInsets.only(left: sw * 0.085, top: sh * 0.03),
+                        decoration: BoxDecoration(
+                            border: Border(
+                                bottom: BorderSide(color: Colors.purple))),
+                        child: TextField(
+                          decoration: InputDecoration(
+                              prefixIcon: Icon(Icons.person_outline_outlined,
+                                  size: sw * 0.075, color: Colors.deepPurple),
+                              labelText: "User name",
+                              labelStyle: TextStyle(color: Colors.deepPurple),
+                              border: InputBorder.none),
+                        ),
+                      ),
+                      Container(
+                        padding:
+                            EdgeInsets.only(left: sw * 0.085, top: sh * 0.020),
+                        decoration: BoxDecoration(
+                            border: Border(
+                                bottom: BorderSide(color: Colors.purple))),
+                        child: TextField(
+                          obscureText: true,
+                          decoration: InputDecoration(
+                              prefixIcon: Icon(Icons.lock_outline_sharp,
+                                  size: sw * 0.075, color: Colors.deepPurple),
+                              labelText: "Password",
+                              labelStyle: TextStyle(color: Colors.deepPurple),
+                              border: InputBorder.none),
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(
+                            left: sw * 0.1, top: sh * 0.05, right: sw * 0.1),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => HOME(name: "Somnath"),
+                              ),
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            padding: EdgeInsets.only(
+                                left: sw * 0.15,
+                                top: sw * 0.04,
+                                bottom: sw * 0.04),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            primary: Colors.purple.shade800,
+                            textStyle: TextStyle(
+                              fontSize: 30,
+                            ),
+                          ),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text('LOGIN', textAlign: TextAlign.center),
+                              Icon(Icons.arrow_forward_rounded),
+                              Padding(
+                                padding: EdgeInsets.only(),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: sh * 0.03),
+                      TextButton(
+                        style: TextButton.styleFrom(
+                          textStyle: TextStyle(fontSize: 14),
+                        ),
+                        onPressed: () {},
+                        child: const Text(
+                          'Forgot Password?',
+                          style: TextStyle(
+                            decoration: TextDecoration.underline,
+                            decorationColor: Colors.purple,
+                            decorationThickness: 1.0,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: sh * 0.02),
+                      Container(
+                        alignment: Alignment.center,
+                        child: Text(
+                          'Don’t have an account?',
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.black87,
+                            fontWeight: FontWeight.w200,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: sh * 0.03),
+                      Container(
+                        padding:
+                            EdgeInsets.only(left: sw * 0.1, right: sw * 0.1),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => signUp(),
+                              ),
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(80),
+                            ),
+                            primary: Colors.pink[50],
+                            padding: EdgeInsets.only(
+                                left: sw * 0.15,
+                                top: sw * 0.04,
+                                bottom: sw * 0.04,
+                                right: sw * 0.15),
+                            textStyle: TextStyle(
+                              fontSize: 18,
+                            ),
+                          ),
+                          child: Text('CREATE AN ACCOUNT',
+                              style: TextStyle(color: Colors.grey[600]),
+                              textAlign: TextAlign.center),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class signUp extends StatelessWidget {
+  const signUp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+
+    double sw = MediaQuery.of(context).size.width;
+    double sh = MediaQuery.of(context).size.height;
+
+    return MaterialApp(
+      home: Scaffold(
+        resizeToAvoidBottomInset: false,
+        backgroundColor: Colors.pink[50],
+        body: Column(
+          children: <Widget>[
+            SizedBox(height: sh * 0.05),
+            Container(
+              alignment: Alignment.center,
+              padding: EdgeInsets.only(top: sh * 0.04),
+              child: Text(
+                'Restoe',
+                style: TextStyle(
+                  fontSize: sw * 0.15,
+                  foreground: Paint()
+                    ..style = PaintingStyle.stroke
+                    ..strokeWidth = 4
+                    ..color = Colors.black87,
+                ),
+              ),
+            ),
+            Container(
+              width: sw,
+              alignment: Alignment.center,
+              child: Text(
+                  style: TextStyle(
+                      fontSize: sw * 0.05,
+                      color: Colors.blueGrey,
+                      fontStyle: FontStyle.normal),
+                  "Restaurant App"),
+            ),
+            SizedBox(height: sh * 0.035),
+            Expanded(
+              flex: 1,
+              child: Container(
+                padding: EdgeInsets.only(),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(50),
+                    topRight: Radius.circular(50),
+                  ),
+                ),
+                child: ListView(
+                  shrinkWrap: true,
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.only(left: sw * 0.1),
+                      alignment: Alignment.centerLeft,
+                      child: const Text(
+                        'Create your account ',
+                        style: TextStyle(
+                          fontSize: 28,
+                          color: Colors.black87,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: sh * 0.02),
+                    Container(
+                      child: Padding(
+                        padding:
+                            EdgeInsets.only(left: sw * 0.1, right: sw * 0.1),
+                        child: Text(
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.grey,
+                                fontStyle: FontStyle.normal),
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor "),
+                      ),
+                    ),
+                    Container(
+                      padding:
+                          EdgeInsets.only(left: sw * 0.085, top: sh * 0.02),
+                      decoration: BoxDecoration(
+                          border:
+                              Border(bottom: BorderSide(color: Colors.purple))),
+                      child: TextField(
+                        decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.person_outline_outlined,
+                                size: sw * 0.075, color: Colors.deepPurple),
+                            labelText: "User name",
+                            labelStyle: TextStyle(color: Colors.deepPurple),
+                            border: InputBorder.none),
+                      ),
+                    ),
+                    SizedBox(height: sh * 0.02),
+                    Container(
+                      padding: EdgeInsets.only(left: sw * 0.085),
+                      decoration: BoxDecoration(
+                          border:
+                              Border(bottom: BorderSide(color: Colors.purple))),
+                      child: TextField(
+                        decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.mail_outline_rounded,
+                                size: sw * 0.075, color: Colors.deepPurple),
+                            labelText: "E-mail id",
+                            labelStyle: TextStyle(color: Colors.deepPurple),
+                            border: InputBorder.none),
+                      ),
+                    ),
+                    Container(
+                      padding:
+                          EdgeInsets.only(left: sw * 0.085, top: sh * 0.020),
+                      decoration: BoxDecoration(
+                          border:
+                              Border(bottom: BorderSide(color: Colors.purple))),
+                      child: TextField(
+                        obscureText: true,
+                        decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.lock_outline_sharp,
+                                size: sw * 0.075, color: Colors.deepPurple),
+                            labelText: "Password",
+                            labelStyle: TextStyle(color: Colors.deepPurple),
+                            border: InputBorder.none),
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(
+                          left: sw * 0.1, top: sh * 0.05, right: sw * 0.1),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HOME(name: "Somnath"),
+                            ),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.only(
+                              left: sw * 0.15,
+                              top: sw * 0.04,
+                              bottom: sw * 0.04),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          primary: Colors.purple.shade800,
+                          textStyle: TextStyle(
+                            fontSize: 30,
+                          ),
+                        ),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text('REGISTER', textAlign: TextAlign.center),
+                            Icon(Icons.arrow_forward_rounded),
+                            Padding(
+                              padding: EdgeInsets.only(),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: sh * 0.02),
+                    Container(
+                      alignment: Alignment.center,
+                      child: Text(
+                        'Already have an account?',
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.black87,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: sh * 0.03),
+                    Container(
+                      padding: EdgeInsets.only(left: sw * 0.1, right: sw * 0.1),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => login(),
+                            ),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(80),
+                          ),
+                          primary: Colors.pink[50],
+                          padding: EdgeInsets.only(
+                              left: sw * 0.15,
+                              top: sw * 0.04,
+                              bottom: sw * 0.04,
+                              right: sw * 0.15),
+                          textStyle: TextStyle(
+                            fontSize: 20,
+                          ),
+                        ),
+                        child: Text('SIGN IN',
+                            style: TextStyle(color: Colors.grey[600]),
+                            textAlign: TextAlign.center),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+class HOME extends StatefulWidget {
+  String name;
+  HOME({super.key,  required this.name});
+
+  @override
+  _HOME createState() => _HOME(name: name);
+}
+
+class _HOME extends State<HOME> {
+  String name;
+  _HOME({ required this.name});
+
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  final List<Widget> _widgetOptions = <Widget>[
+
+    Container(
+        alignment: Alignment.center,
+        decoration: const BoxDecoration(
+          color: Colors.transparent,
+        ),
+        child:  Center (
+          child: FoodTile(),)
+    ),
+    Container(
+        alignment: Alignment.center,
+        decoration: const BoxDecoration(
+          color: Colors.transparent,
+        ),
+        child: const Center (
+          child: Text(
+            'BASKET',
+          ),)
+    ),
+    Container(
+        alignment: Alignment.center,
+        decoration: const BoxDecoration(
+          color: Colors.transparent,
+        ),
+        child: const Center (
+          child: Text(
+            'OFFERS',
+          ),)
+    ),
+    Container(
+        alignment: Alignment.center,
+        decoration: const BoxDecoration(
+          color: Colors.transparent,
+        ),
+        child: const Center (
+          child: Text(
+            'NOTIFICATIONS',
+          ),)
+    ),
+  ];
+
+
+  @override
+  Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    return Scaffold(
+      resizeToAvoidBottomInset : false,
+      backgroundColor: Colors.pink[50],
+      body: Stack( children: [
+
+        Container(
+            margin: const EdgeInsets.only(top: 50,),
+            child: Column( mainAxisAlignment: MainAxisAlignment.start,crossAxisAlignment: CrossAxisAlignment.center,children:  [
+              Container(alignment: AlignmentDirectional.topStart,padding: const EdgeInsets.only(left: 25), child: Text("Hi, $name",style: const TextStyle(fontSize: 30,fontWeight: FontWeight.bold, fontFamily: 'Bradley Hand',color: Color.fromARGB(86, 71, 92, 1),))),
+              const SizedBox(height: 15),
+              Container( alignment: AlignmentDirectional.topStart,padding: const EdgeInsets.only(left: 25,right: 25),
+                child:
+                Row( mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [ const Text("What do you\nwant to eat today?",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,fontFamily: 'Bradley Hand',color: Colors.black,)),
+                  CircleAvatar(
+                    radius: 36,
+                    backgroundColor: Colors.brown.shade800,
+                    backgroundImage: const AssetImage('assets/piz.jpg'),
+
+                  )
+                ]),),
+              Container(
+                padding: const EdgeInsets.all(20),
+                child: const TextField(
+                  decoration: InputDecoration(
+                    suffixIcon: Icon(Icons.search_rounded,size: 40,),
+                    hintText: 'Search here' ,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                height: 130,
+                child: ListView(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    children: <Widget>[
+                      Tile(icon: IconButton(
+                        icon: const Icon(LineAwesomeIcons.pizza_slice),
+                        iconSize: 60,
+                        // Use the LinearGradient widget to define the gradient
+                        color: const Color.fromARGB( 201, 138, 156, 1),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => TileFriend(name: "Pizza")),
+                          );
+                        },
+                      ), name: 'Pizza',),
+                      Tile(icon: IconButton(
+                        icon: const Icon(LineAwesomeIcons.hamburger),
+                        iconSize: 60,
+                        // Use the LinearGradient widget to define the gradient
+                        color: const Color.fromARGB( 201, 138, 156, 1),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => TileFriend(name: "Burger")),
+                          );
+                        },
+                      ), name: 'Burger',),
+                      Tile(icon: IconButton(
+                        icon: const Icon(Icons.local_drink_outlined),
+                        iconSize: 50,
+                        // Use the LinearGradient widget to define the gradient
+                        color: const Color.fromARGB( 201, 138, 156, 1),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => TileFriend(name: "Drinks")),
+                          );
+                        },
+                      ), name: 'Drinks',),
+                      Tile(icon: IconButton(
+                        icon: const Icon(LineAwesomeIcons.bone),
+                        iconSize: 60,
+                        // Use the LinearGradient widget to define the gradient
+                        color: const Color.fromARGB( 201, 138, 156, 1),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => TileFriend(name: "Chicken")),
+                          );
+                        },
+                      ), name: 'Chicken',),
+                      Tile(icon: IconButton(
+                        icon: const Icon(LineAwesomeIcons.apple),
+                        iconSize: 60,
+                        // Use the LinearGradient widget to define the gradient
+                        color: const Color.fromARGB( 201, 138, 156, 1),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => TileFriend(name: "Fruits")),
+                          );
+                        },
+                      ), name: 'Fruits',),
+                    ]),
+              ),
+              Expanded( child: Container(
+                clipBehavior: Clip.hardEdge,
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(topLeft: Radius.circular(38),topRight: Radius.circular(38)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey,
+                      blurRadius: 15.0, // soften the shadow
+                      spreadRadius: 5.0, //extend the shadow
+                      offset: Offset(
+                        5.0, // Move to right 5  horizontally
+                        5.0, // Move to bottom 5 Vertically
+                      ),
+                    )
+                  ],
+                ),
+                margin: const EdgeInsets.only(top: 10,),
+                width: screenWidth,
+                child: _widgetOptions.elementAt(_selectedIndex),
+              ),
+              ),
+            ])),],),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+
+          BottomNavigationBarItem(
+            icon: Icon(LineAwesomeIcons.home,size: 30,),
+            label: '',
+            backgroundColor: Colors.transparent,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(CupertinoIcons.archivebox_fill,size: 30,),
+            label: '',
+
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(CupertinoIcons.percent,size: 30,),
+            label: '',
+            backgroundColor: Colors.transparent,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(CupertinoIcons.bell,size: 30,),
+            label: '',
+            backgroundColor: Colors.transparent,
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.deepPurple,
+        backgroundColor: Colors.white,
+        type: BottomNavigationBarType.fixed,
+        unselectedItemColor: Colors.purple[200],
+        onTap: _onItemTapped,
+
+        elevation: 0,
+      ),
+    );
+  }
+}
+
+class Tile extends StatelessWidget {
+  Widget icon;
+  String name;
+  Tile({super.key, required this.icon,required this.name});
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(8)),
+        color: Colors.transparent,
+      ),
+      child: Container(
+        padding: const EdgeInsets.only(left: 12,right: 12),
+        color: Colors.transparent,
+        child: Column(children: [
+          Card(
+            color: Colors.transparent,
+            elevation: 6,
+            child: Container(
+              height: 85,width: 85,
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(20)),
+                color: Color.fromRGBO(84, 1, 116, 1),
+              ),
+              child: IconTheme(
+                data: const IconThemeData(color: Colors.white),
+                child: icon,
+              ),
+            ),),
+          SizedBox(height: 10,),
+          Text("$name",style: const TextStyle(color: Colors.black,fontSize: 20),)]),
+      ),
+    );
+  }
+}
+
+class FoodTile extends StatelessWidget {
+
+  FoodTile({super.key,});
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+
+      color: Colors.transparent,
+      padding: EdgeInsets.only(top: 10,bottom: 20),
+      child: Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 25),
+          child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
+            Text("Recomended for you",style: TextStyle(color: Color.fromRGBO(89, 73, 95, 1) ,fontWeight: FontWeight.bold,fontSize: 22),),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CardFriend(name: "More")),
+                );
+
+              },
+              child: const Text("More",style: TextStyle(color: Color.fromRGBO(241, 96, 138, 1) ,fontWeight: FontWeight.bold,fontSize: 18,decoration: TextDecoration.underline,)),
+            ),
+          ]),),
+        Container(
+          height: 250,
+          child: ListView(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+
+              children: <Widget>[
+                FoodPicture(name: "Biryani", price: 20,image: "assets/69.jpg"),
+                FoodPicture(name: "Chicken", price: 25,image: "assets/69.jpg"),
+                FoodPicture(name: "Pizza", price: 15,image: "assets/69.jpg"),
+                FoodPicture(name: "Ice Cream", price: 3,image: "assets/69.jpg"),
+                FoodPicture(name: "Burger", price: 10,image: "assets/69.jpg"),
+              ]),),
+      ]),
+    );
+  }
+}
+
+class FoodPicture extends StatelessWidget {
+  int price;
+  String name;
+  String image;
+  FoodPicture({super.key,required this.name,required this.price,required this.image});
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: (){
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => CardFriend(name: "$name")),
+        );
+      },
+      child:Card(
+        clipBehavior: Clip.hardEdge,
+        elevation: 5,
+        margin: EdgeInsets.only(bottom: 10,top: 10,left: 20),
+        color: Color.fromRGBO(222, 213, 224, 1.0),
+        shadowColor: Colors.black,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+        child: Column(children: [
+          Container(height: 150,width: 200, child:Image.asset("$image",width: 200,fit: BoxFit.fitWidth, )),
+          Container(
+            padding: EdgeInsets.all(10),
+            height: 80,width: 200,
+            child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [Text("$name",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),Text("")],),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
+                Text("\$$price",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.deepPurple,fontStyle: FontStyle.italic)),
+                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Icon(CupertinoIcons.star_fill,size: 18, color: Color.fromRGBO(255, 127, 35, 1),),
+                    Icon(CupertinoIcons.star_fill,size: 18, color: Color.fromRGBO(255, 127, 35, 1),),
+                    Icon(CupertinoIcons.star_fill,size: 18, color: Color.fromRGBO(255, 127, 35, 1),),
+                    Icon(CupertinoIcons.star_fill,size: 18, color: Color.fromRGBO(255, 127, 35, 1),),
+                    Icon(CupertinoIcons.star_fill,size: 18, color: Color.fromRGBO(255, 127, 35, 1),),
+                  ],),],),
+            ], ),)]),
+      ),);
+  }
+}
+
+
+class TileFriend extends StatelessWidget {
+  String name;
+  TileFriend({super.key,required this.name});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body:Center(
+        child
+            :Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: <Color>[
+                Color.fromRGBO(243, 220, 255, 1),
+                Color.fromRGBO(255, 250, 251, 1),
+              ],
+            ),
+          ),
+          child: Center(
+
+            child:
+            Container( alignment: AlignmentDirectional.center,padding: const EdgeInsets.only(left: 25,right: 25),
+
+              child: Text("So I see You Like To  Have $name 🫣",
+                  style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,fontFamily: 'Bradley Hand',color: Colors.black,)),
+            ),),
+        ),),
+    );
+  }
+}
+
+class CardFriend extends StatelessWidget {
+  String name;
+  CardFriend({super.key,required this.name});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body:Center(
+        child
+            :Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: <Color>[
+                Color.fromRGBO(243, 220, 255, 1),
+                Color.fromRGBO(255, 250, 251, 1),
+              ],
+            ),
+          ),
+          child: Center(
+
+            child:
+            Container( alignment: AlignmentDirectional.center,padding: const EdgeInsets.only(left: 25,right: 25),
+
+              child: Text("I wish I could give you $name but I can't,\nbut if you can hire me maybe i can find a way :) 🫣🤭",
+                  style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,fontFamily: 'Bradley Hand',color: Colors.black,)),
+            ),),
+        ),),
+    );
+  }
+}
+
